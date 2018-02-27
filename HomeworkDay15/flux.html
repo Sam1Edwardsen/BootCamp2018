@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <title>Flux Test</title>
+</head>
+
+<body>
+
+    <h1>Title:</h1>
+    <h2 id="newtitle"></h2>
+
+    <button id="updtitle">Update Title</button>
+    <input type="text" id="newtext" />
+    <button id="updcontent">Update Content</button>
+
+    <h1>Content Section</h1>
+    <h2 id="newcontent"></h2>
+    <script>
+        let initialState = {
+            title: "",
+            content: "",
+        }
+        const render = (props) => {
+            document.getElementById('newtitle').innerText = props.title;
+            document.getElementById('newcontent').innerText = props.content;
+        }
+        const reducer = (state = initialState, action) => {
+            console.log(state);
+            switch (action.type) {
+                case 'updateTitle':
+                    return {
+                        title: action.newText,
+                        content: state.content
+                    }
+                case 'updateContent':
+                    return {
+                        title: state.title,
+                        content: state.content + " " + action.newText
+                    }
+                default:
+                    return state
+            }
+        }
+
+        function storeCreator(reducer) {
+            let listeners = []
+            state = reducer(undefined, {})
+
+            function receiveAction(action) {
+                state = reducer(state, action)
+                listeners.map((listener, idx) => {
+                    listener(state);
+                })
+            }
+
+            function registerListener(callback) {
+                listeners.push(callback)
+            }
+            return {
+                receiveAction,
+                registerListener
+            }
+        }
+
+
+        let store = storeCreator(reducer);
+        store.registerListener(render);
+
+        const dispatch = (action) => {
+            console.log(action.type)
+            store.receiveAction(action)
+            console.log(state)
+        }
+
+        // console.log(state);
+        // state = reducer(state, { type: "updateTitle" });
+        // console.log(state);
+        // state = reducer(state, { type: "updateContent" });
+        // console.log(state);
+        // state = reducer(state, { type: "updateContent" });
+        // console.log(state);
+        // state = reducer(state, { type: "updateTitle" });
+        // console.log(state);
+        // render();
+
+        document.getElementById('updtitle').addEventListener("click", () => dispatch({
+            type: 'updateTitle',
+            newText: document.getElementById("newtext").value
+        }));
+        document.getElementById('updcontent').addEventListener("click", () => dispatch({
+            type: 'updateContent',
+            newText: document.getElementById("newtext").value
+        }));
+    </script>
+
+</body>
+
+</html>

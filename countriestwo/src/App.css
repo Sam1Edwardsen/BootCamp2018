@@ -1,0 +1,10 @@
+.App {
+  height: 100vh;
+}
+.leftNav {
+  height: 100vh;
+}
+.rightHome {
+  height: 100vh;
+  overflow: auto;
+}

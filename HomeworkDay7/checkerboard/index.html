@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>React</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+</head>
+<body>
+   
+    <div id="prop1s"></div>
+   
+    <script>
+
+
+function makearr(length){
+let array =[];
+for(let i = 0; i<length; i++){
+array.push(i)
+
+}
+return array;
+}
+function CheckerBoard (props) {
+    const row = makearr(props.size).map(function(callbackness,idx){
+        return React.createElement(Row,{key:idx,row:idx, size:props.size})
+    })
+    return React.createElement('div',{style:{}},row)
+}
+function Row (props) {
+    let rowidx = props.row;
+    
+    
+    
+    const cells = makearr(props.size).map (function(callbackness,idx){
+        let color1= '';
+        if ((idx %2 === 0 && rowidx %2===0) || (idx %2 !== 0 && rowidx %2!==0)){
+            color1= "red"
+        }else{
+            color1="black"
+        }
+        return React.createElement(Cell,{key:idx,color:color1})
+    })
+  console.log(cells)
+return React.createElement('div',{style:{height: '20px'}},cells)
+}
+function Cell (props) {
+
+  
+
+return React.createElement('div', { style: { height: '20px', width: '20px', display:'inline-block',backgroundColor:props.color} },'')
+}
+
+
+ReactDOM.render(React.createElement(CheckerBoard,{size:12}),
+
+        document.getElementById('prop1s'))
+
+        </script>
+</body>
+
+</html>

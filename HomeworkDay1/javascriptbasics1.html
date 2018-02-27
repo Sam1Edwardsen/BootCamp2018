@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="myFunction()">Push Function</button>
+
+<p id="demo"></p>
+
+<script>
+
+var tools = ["Dewalt", "Milwaukee", "Makita"];
+document.getElementById("demo").innerHTML = tools;
+
+function myFunction() {
+    tools.push("coding", "dojo", "rocks");
+document.getElementById("demo").innerHTML = tools;}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+Nav bar must be linked to all pages
+    - Consists of Home, Customize, Personal Feed
+
+Home Page 
+    - Must have nav bar present
+    - "Home" in nav bar must be active
+    - Large header displaying "Top Headlines" must be present
+    - Needs to load top headlines from news api source
+    - Individual card components will make up the top headline articles pulled from news api
+    - The cards should scroll independently and not be part of the larger "app" page
+    - Cards must contain:
+        - data.articles.urlToImage
+        - data.articles.title
+        - data.articles.author
+        - data.articles.description
+    - Title within card should link to actual article
+    - Route will be "/" and Home
+
+Customize Page
+    - Must have nav bar present
+    - "Customize" in nav bar must be active
+    - Large header displaying "Select Your Sources!" must be present
+    - Three radio buttons will toggle catagories (bus, tech, sci) of articles listed.
+        - data.sources.category (?)
+    - Large dynamic header displays below radio buttons based upon selection (bus, tech, sci)
+    - Individual card components will make up the articles pulled from news api
+    - The cards should scroll independently and not be part of the larger "app" page
+    - Cards will display article title and description
+    - The cards will have a "subscribe" button
+        - The subscribe button will be active or inactive and must change color based upon selection (picked v unpicked)
+    - Route will be "/categories"
+
+Personal Feed Page
+    - Must have nav bar present
+    - "Personal Feed" in nav bar must be active
+    - Large header displaying "Personal Feed" must be present
+    - Individual card components will make up the articles pulled from news api
+    - The cards should scroll independently and not be part of the larger "app" page
+    - Cards must contain:
+        - data.articles.urlToImage
+        - data.articles.title
+        - data.articles.author
+        - data.articles.description
+    - Title within card should link to actual article
+    - Route will be "/feed"
+
+If Redux
+    - Api key would be in store
+    - Api URL could also be in store
+    - Reducer would hold state
+    - Action would hold concatenation for pulling data for different pages (e.g. top headlines, sources, feeds)
+    - Break out individual page views into different files and import to app.js

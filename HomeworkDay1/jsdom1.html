@@ -1,0 +1,26 @@
+<html>
+<body>
+    <h1>Students</copyh1>
+    <ul id="main">
+        
+    </ul> 
+<script>
+    function appendList(array, id){
+     for(let i = 0; i < array.length; i++){
+        let listItem = document.createElement("li");
+         // id = target_id = main;
+        document.getElementById("main").appendChild(listItem);
+        listItem.innerHTML = array[i];
+     };
+    };
+    let students = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+    let target_id = "main";
+    appendList(students, target_id);
+    
+
+</script>   
+</body>
+</html>
+
+
+Complete the appendList function. appendList should take an array of strings and the id of a <ul> element, and append all elements of the array as <li> tags.

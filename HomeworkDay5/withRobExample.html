@@ -1,0 +1,26 @@
+<html>
+
+<head>
+</head>
+
+<body>
+  <div id="container">
+  </div>
+  <script>
+
+    function arrayListBuilder(arr1) {
+      arr1.forEach(function (element) {
+        str1 += "<li>" + element + "</li>"
+      })
+      document.getElementById("container").innerHTML = str1
+    }
+    window.onload(function () {
+      document.getElementById("container").addEventListener("click,", function (event) { arrListBuilder(arrList2) }, True)
+      let arrayList = ["One", "Two", "Three"]
+      let arrayList2 = ["Done"]
+    }
+
+  </script>
+</body>
+
+</html>
